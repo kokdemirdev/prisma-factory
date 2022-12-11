@@ -17,7 +17,7 @@ generatorHandler({
     }
   },
   onGenerate: async (options: GeneratorOptions) => {
-    options.dmmf.datamodel.enums.forEach(async (enumInfo) => {
+    for (const enumInfo of options.dmmf.datamodel.enums) {
       const tsEnum = genEnum(enumInfo)
 
       const writeLocation = path.join(
@@ -26,6 +26,6 @@ generatorHandler({
       )
 
       await writeFileSafely(writeLocation, tsEnum)
-    })
+    }
   },
 })
